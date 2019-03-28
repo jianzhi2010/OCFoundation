@@ -15,8 +15,15 @@
 @implementation AppDelegate
 
 
+- (void)test:(NSNotification *)noti {
+    NSLog(@"noti:%@", noti);
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(test:) name:nil object:nil];
+    
     return YES;
 }
 
