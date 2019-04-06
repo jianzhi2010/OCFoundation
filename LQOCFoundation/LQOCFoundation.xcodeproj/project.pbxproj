@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3B236C792252664E0047D351 /* LQNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B236C782252664E0047D351 /* LQNotification.m */; };
+		3B3902BE2258531D005F6DE9 /* NotificationCenter.md in Resources */ = {isa = PBXBuildFile; fileRef = 3B3902BD2258531D005F6DE9 /* NotificationCenter.md */; };
+		3B3902C122585371005F6DE9 /* LQTestNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902C022585371005F6DE9 /* LQTestNotificationViewController.m */; };
 		3BF580CA224BB974002072AF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF580C9224BB974002072AF /* AppDelegate.m */; };
 		3BF580CD224BB974002072AF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF580CC224BB974002072AF /* ViewController.m */; };
 		3BF580D0224BB974002072AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BF580CE224BB974002072AF /* Main.storyboard */; };
@@ -32,6 +34,9 @@
 /* Begin PBXFileReference section */
 		3B236C772252664E0047D351 /* LQNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQNotification.h; sourceTree = "<group>"; };
 		3B236C782252664E0047D351 /* LQNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQNotification.m; sourceTree = "<group>"; };
+		3B3902BD2258531D005F6DE9 /* NotificationCenter.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = NotificationCenter.md; sourceTree = "<group>"; };
+		3B3902BF22585371005F6DE9 /* LQTestNotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQTestNotificationViewController.h; sourceTree = "<group>"; };
+		3B3902C022585371005F6DE9 /* LQTestNotificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQTestNotificationViewController.m; sourceTree = "<group>"; };
 		3BF580C5224BB974002072AF /* LQOCFoundation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LQOCFoundation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BF580C8224BB974002072AF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3BF580C9224BB974002072AF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -116,12 +121,15 @@
 		3BF580EC224BB996002072AF /* NotificationCenter */ = {
 			isa = PBXGroup;
 			children = (
+				3B3902BD2258531D005F6DE9 /* NotificationCenter.md */,
 				3B236C772252664E0047D351 /* LQNotification.h */,
 				3B236C782252664E0047D351 /* LQNotification.m */,
 				3BF580EF224BB996002072AF /* LQObservation.h */,
 				3BF580ED224BB996002072AF /* LQObservation.m */,
 				3BF580EE224BB996002072AF /* LQNotificationCenter.h */,
 				3BF580F0224BB996002072AF /* LQNotificationCenter.m */,
+				3B3902BF22585371005F6DE9 /* LQTestNotificationViewController.h */,
+				3B3902C022585371005F6DE9 /* LQTestNotificationViewController.m */,
 			);
 			path = NotificationCenter;
 			sourceTree = "<group>";
@@ -206,6 +214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B3902BE2258531D005F6DE9 /* NotificationCenter.md in Resources */,
 				3BF580D5224BB975002072AF /* LaunchScreen.storyboard in Resources */,
 				3BF580D2224BB975002072AF /* Assets.xcassets in Resources */,
 				3BF580D0224BB974002072AF /* Main.storyboard in Resources */,
@@ -227,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BF580CD224BB974002072AF /* ViewController.m in Sources */,
+				3B3902C122585371005F6DE9 /* LQTestNotificationViewController.m in Sources */,
 				3B236C792252664E0047D351 /* LQNotification.m in Sources */,
 				3BF580F2224BB996002072AF /* LQNotificationCenter.m in Sources */,
 				3BF580D8224BB975002072AF /* main.m in Sources */,

@@ -16,7 +16,7 @@
 
 
 - (void)test:(NSNotification *)noti {
-    NSLog(@"noti:%@", noti);
+//    NSLog(@"noti:%@", noti);
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

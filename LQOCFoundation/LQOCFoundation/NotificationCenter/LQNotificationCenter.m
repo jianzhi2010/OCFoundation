@@ -83,6 +83,7 @@
 }
 
 - (void)addObserver:(id)observer selector:(SEL)aSelector name:(nullable NSString *)aName object:(nullable id)anObject {
+    // todo: nullable name
     if (!observer || !aSelector || ![observer respondsToSelector:aSelector]) {
         return;
     }
