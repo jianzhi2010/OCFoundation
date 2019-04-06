@@ -12,7 +12,7 @@
 
 #define WAIT do {\
 [self expectationForNotification:@"LQUnitTest" object:nil handler:nil];\
-[self waitForExpectationsWithTimeout:20 handler:nil];\
+[self waitForExpectationsWithTimeout:30 handler:nil];\
 } while (0);
 #define NOTIFY \
 [[NSNotificationCenter defaultCenter]postNotificationName:@"LQUnitTest" object:nil];
@@ -40,7 +40,7 @@
     [[LQNotificationCenter defaultCenter] addObserver:self selector:@selector(testNotify:) name:@"testPost" object:nil];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[LQNotificationCenter defaultCenter] postNotificationName:@"testPost" object:nil];
+        [[LQNotificationCenter defaultCenter] postNotificationName:@"testPost" object:nil userInfo:nil];
     });
     
     WAIT
@@ -61,7 +61,7 @@
     }];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[LQNotificationCenter defaultCenter] postNotificationName:@"testPostBlock" object:nil];
+        [[LQNotificationCenter defaultCenter] postNotificationName:@"testPostBlock" object:nil userInfo:nil];
     });
 
     WAIT
@@ -75,7 +75,11 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [[LQNotificationCenter defaultCenter] removeObserver:self name:@"testRemoveObserver" object:nil];
-        [[LQNotificationCenter defaultCenter] postNotificationName:@"testRemoveObserver" object:nil];
+        [[LQNotificationCenter defaultCenter] postNotificationName:@"testRemoveObserver" object:nil userInfo:nil];
+
+        [[LQNotificationCenter defaultCenter] addObserver:self selector:@selector(testRemoveObserver:) name:@"testRemoveObserver" object:nil];
+        [[LQNotificationCenter defaultCenter] removeObserver:self name:nil object:nil];
+        [[LQNotificationCenter defaultCenter] postNotificationName:@"test" object:nil userInfo:nil];
         NOTIFY
     });
     
@@ -93,7 +97,7 @@
     [[LQNotificationCenter defaultCenter] addObserver:obserber selector:@selector(testRemoveObserver:) name:@"testRemoveObserver" object:nil];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[LQNotificationCenter defaultCenter] postNotificationName:@"testRemoveObserver" object:nil];
+        [[LQNotificationCenter defaultCenter] postNotificationName:@"testRemoveObserver" object:nil userInfo:nil];
         NOTIFY
     });
     
@@ -103,13 +107,13 @@
 - (void)testBackgroundObserver {
     dispatch_group_t group = dispatch_group_create();
     
-    for (int i=0; i<3000; i++) {
+    for (int i=0; i<4000; i++) {
         
         NSString *name = [NSString stringWithFormat:@"testBackgroundObserver%dd", i];
         
         dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
-            [[LQNotificationCenter defaultCenter] addObserver:self selector:@selector(testPerformanceExample) name:name object:nil];
+            [[LQNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyBackground) name:name object:nil];
         });
         
         dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -117,7 +121,7 @@
         });
         
         dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [[LQNotificationCenter defaultCenter] postNotificationName:name object:nil];
+            [[LQNotificationCenter defaultCenter] postNotificationName:name object:nil userInfo:nil];
         });
     }
     
@@ -128,6 +132,9 @@
     WAIT
 }
 
+- (void)notifyBackground {
+    
+}
 
 - (void)testPerformanceExample {
     // This is an example of a performance test case.

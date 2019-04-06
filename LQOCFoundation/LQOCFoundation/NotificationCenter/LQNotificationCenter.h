@@ -16,8 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)defaultCenter;
 
-- (void)postNotificationName:(NSString *)name object:(nullable id)anObject;
-
+- (void)postNotificationName:(NSString *)name object:(nullable id)object userInfo:(nullable NSDictionary *)userInfo;
 - (void)addObserver:(id)observer selector:(SEL)aSelector name:(nullable NSNotificationName)aName object:(nullable id)anObject;
 
 - (id <NSObject>)addObserverForName:(nullable NSNotificationName)name object:(nullable id)obj queue:(nullable NSOperationQueue *)queue usingBlock:(void (^)(LQNotification *note))block;

@@ -11,11 +11,38 @@
 #import "LQObservation.h"
 
 
+@interface LQObserver : NSObject
+
+@property (nonatomic, strong) NSOperationQueue *queue;
+@property (nonatomic, copy) void (^notificationCallback)(LQNotification *note);
+
+- (void)didReceiveNotification:(LQNotification *)note;
+
+@end
+
+
+@implementation LQObserver
+
+
+- (void)didReceiveNotification:(LQNotification *)note {
+    if (self.queue) {
+        __weak __typeof(self) weakSelf = self;
+        [self.queue addOperationWithBlock:^{
+            if (weakSelf.notificationCallback) {
+                weakSelf.notificationCallback(note);
+            }
+        }];
+    } else {
+        self.notificationCallback(note);
+    }
+}
+
+@end
+
 @interface LQNotificationCenter()
 
 
-@property (nonatomic, strong) NSMutableDictionary<NSString *, LQObservation *> *observations;
-@property (nonatomic, strong) dispatch_queue_t observationQueue;
+@property (nonatomic, strong) NSMutableDictionary<NSString *, NSMutableArray<LQObservation *> *> *observations;
 @property (nonatomic, strong) NSRecursiveLock *lock;
 
 @end
@@ -47,23 +74,12 @@
         return nil;
     }
     
-    LQObservation *observation = [[LQObservation alloc] init];
-    observation.object = obj;
-    observation.name = name;
-    observation.queue = queue;
-    observation.notificationCallback = block;
-    __weak __typeof(self) weakSelf = self;
-    [observation addObserverDeallocCallback:^(LQObservation *observation) {
-        [weakSelf.lock lock];
-        [weakSelf.observations removeObjectForKey:observation.name];
-        [weakSelf.lock unlock];
-    }];
+    LQObserver *observer = [[LQObserver alloc] init];
+    observer.queue = queue;
+    observer.notificationCallback = block;
+    [self addObserver:observer selector:@selector(didReceiveNotification:) name:name object:obj];
     
-    [self.lock lock];
-    [self.observations setObject:observation forKey:name];
-    [self.lock unlock];
-    
-    return observation;
+    return observer;
 }
 
 - (void)addObserver:(id)observer selector:(SEL)aSelector name:(nullable NSString *)aName object:(nullable id)anObject {
@@ -78,51 +94,49 @@
     observation.selector = aSelector;
     __weak __typeof(self) weakSelf = self;
     [observation addObserverDeallocCallback:^(LQObservation *observation) {
-        [weakSelf.lock lock];
-        [weakSelf.observations removeObjectForKey:observation.name];
-        [weakSelf.lock unlock];
+        [weakSelf removeObserver:observation.observer name:observation.name object:observation.object];
     }];
     
     [self.lock lock];
-    [self.observations setObject:observation forKey:aName];
+    
+    NSMutableArray *list = [self.observations objectForKey:aName];
+    if (list) {
+        [list addObject:observation];
+    } else {
+        list = [NSMutableArray array];
+        [list addObject:observation];
+        [self.observations setObject:list forKey:aName];
+    }
+    
     [self.lock unlock];
 }
 
-- (void)postNotificationName:(NSString *)name object:(nullable id)anObject {
+
+- (void)postNotificationName:(NSString *)name object:(nullable id)object userInfo:(nullable NSDictionary *)userInfo {
     if (!name.length) {
         return;
     }
     
     [self.lock lock];
-    LQObservation *observation = [self.observations objectForKey:name];
-    [self.lock unlock];
-    
-    if (!observation) {
+    NSMutableArray<LQObservation *> *list = [self.observations objectForKey:name];
+    if (!list) {
+        [self.lock unlock];
         return;
     }
     
-    if (observation.object && anObject != observation.object) {
-        return ;
-    }
-    
-    if (observation.selector) {
-        LQNotification *notification = [[LQNotification alloc] initWithName:name object:anObject userInfo:nil];
-        [observation.observer performSelector:observation.selector withObject:notification];
-    }
-    
-    if (observation.notificationCallback) {
-        LQNotification *notification = [[LQNotification alloc] initWithName:name object:anObject userInfo:nil];
-        if (observation.queue) {
-            [observation.queue addOperationWithBlock:^{
-                observation.notificationCallback(notification);
-            }];
-        } else {
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                observation.notificationCallback(notification);
-            }];
+    __block NSMutableArray<LQObservation *> *observations = [NSMutableArray array];
+    [list enumerateObjectsUsingBlock:^(LQObservation * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (!obj.object || obj.object == object) {
+            [observations addObject:obj];
         }
-    }
+    }];
     
+    [self.lock unlock];
+
+    LQNotification *notification = [[LQNotification alloc] initWithName:name object:object userInfo:userInfo];
+    [observations enumerateObjectsUsingBlock:^(LQObservation * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj.observer performSelector:obj.selector withObject:notification];
+    }];
 }
 
 - (void)removeObserver:(id)observer {
@@ -134,15 +148,20 @@
     [self.lock lock];
 
     if (aName.length) {
-        LQObservation *observation = [self.observations objectForKey:aName];
-        if (observation.observer && observation.observer == observer) {
-            [self.observations removeObjectForKey:aName];
-        }
-    } else {
-        [self.observations enumerateKeysAndObjectsWithOptions:NSEnumerationReverse usingBlock:^(NSString * _Nonnull key, LQObservation * _Nonnull obj, BOOL * _Nonnull stop) {
-            if (obj.observer && obj.observer == observer) {
-                [self.observations removeObjectForKey:obj.name];
+        NSMutableArray<LQObservation *> *list = [self.observations objectForKey:aName];
+        [list enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(LQObservation * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (obj.name && [obj.name isEqualToString:aName]) {
+                [list removeObject:obj];
             }
+        }];
+    } else {
+        [self.observations enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSMutableArray<LQObservation *> * _Nonnull list, BOOL * _Nonnull stop) {
+            
+            [list enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(LQObservation * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if (obj.observer && obj.observer == observer) {
+                    [list removeObject:obj];
+                }
+            }];
         }];
     }
     

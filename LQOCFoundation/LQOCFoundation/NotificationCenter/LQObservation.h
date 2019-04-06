@@ -16,11 +16,7 @@
 @property (nonatomic, strong) id object;
 @property (nonatomic, weak) id observer;
 @property (nonatomic, assign) SEL selector;
-@property (nonatomic, strong) NSOperationQueue *queue;
-
-@property (nonatomic, copy) void (^notificationCallback)(LQNotification *note);
 
 - (void)addObserverDeallocCallback:(void (^)(LQObservation *observation))callback;
 
 @end
-
