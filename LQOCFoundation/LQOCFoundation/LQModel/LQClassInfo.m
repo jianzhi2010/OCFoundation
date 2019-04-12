@@ -316,7 +316,33 @@ LQEncodingType LQEncodingGetType(const char *typeEncoding) {
         return nil;
     }
     
-    LQClassInfo *info = [[LQClassInfo alloc] initWithClass:clazz];
+    static NSMutableDictionary *classCache;
+    static NSMutableDictionary *metaCache;
+    static dispatch_semaphore_t lock;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        classCache = [NSMutableDictionary dictionary];
+        metaCache = [NSMutableDictionary dictionary];
+        lock = dispatch_semaphore_create(1);
+    });
+    
+    dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+    LQClassInfo *info = class_isMetaClass(clazz) ? [metaCache objectForKey:NSStringFromClass(clazz)] : [classCache objectForKey:NSStringFromClass(clazz)];
+    dispatch_semaphore_signal(lock);
+    
+    if (!info) {
+        // maybe run this code multiple times , no big problem
+        info = [[LQClassInfo alloc] initWithClass:clazz];
+        if (info) {
+            dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+                if (class_isMetaClass(clazz)) {
+                    [metaCache setObject:info forKey:NSStringFromClass(clazz)];
+                } else {
+                    [classCache setObject:info forKey:NSStringFromClass(clazz)];
+                }
+            dispatch_semaphore_signal(lock);
+        }
+    }
     
     return info;
 }
