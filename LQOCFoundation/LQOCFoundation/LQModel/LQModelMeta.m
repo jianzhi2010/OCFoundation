@@ -191,7 +191,7 @@ static force_inline BOOL LQEncodingTypeIsCNumber(LQEncodingType type) {
         // Create all property metas.
         __block LQClassInfo *currentClassInfo = _classInfo;
         NSMutableDictionary *allPropertyMetas = [NSMutableDictionary new];
-        while (currentClassInfo && currentClassInfo.superClassInfo) {
+        while (currentClassInfo && currentClassInfo.superClass) {
             
             for (LQClassPropertyInfo *propertyInfo in currentClassInfo.propertyInfos.allValues) {
                 LQModelPropertyMeta *meta = [LQModelPropertyMeta metaWithClassInfo:_classInfo propertyInfo:propertyInfo generic:genericMapper[propertyInfo.name]];

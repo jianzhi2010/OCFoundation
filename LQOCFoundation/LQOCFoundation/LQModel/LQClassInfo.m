@@ -211,6 +211,14 @@ LQEncodingType LQEncodingGetType(const char *typeEncoding) {
         }
         _type = type;
 
+        if (_name.length) {
+            if (!_getter) {
+                _getter = NSSelectorFromString(_name);
+            }
+            if (!_setter) {
+                _setter = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[_name substringToIndex:1] uppercaseString], [_name substringFromIndex:1]]);
+            }
+        }
     }
     
     return self;
@@ -268,6 +276,11 @@ LQEncodingType LQEncodingGetType(const char *typeEncoding) {
     if (self) {
         _cls = clazz;
         _superClass = class_getSuperclass(clazz);
+        _name = NSStringFromClass(clazz);
+        _isMeta = class_isMetaClass(clazz);
+        if (!_isMeta) {
+            _metaCls = objc_getMetaClass(class_getName(clazz));
+        }
         [self update];
         
         _superClassInfo = [self.class classInfoWithClass:_superClass];
@@ -316,6 +329,7 @@ LQEncodingType LQEncodingGetType(const char *typeEncoding) {
         return nil;
     }
     
+    //缓存
     static NSMutableDictionary *classCache;
     static NSMutableDictionary *metaCache;
     static dispatch_semaphore_t lock;

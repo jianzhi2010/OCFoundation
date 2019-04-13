@@ -102,7 +102,10 @@ typedef NS_OPTIONS(NSUInteger, LQEncodingType) {
 
 @interface LQClassInfo : NSObject
 
+@property (nonatomic, assign) BOOL isMeta; ///< whether this class is meta class
+@property (nonatomic, copy) NSString *name; ///< class name
 @property (nonatomic, assign) Class cls;
+@property (nonatomic, assign) Class metaCls;
 @property (nonatomic, assign) Class superClass;
 @property (nonatomic, strong) NSDictionary<NSString *, LQClassIvarInfo *> *ivarInfos;
 @property (nonatomic, strong) NSDictionary<NSString *, LQClassPropertyInfo *> *propertyInfos;

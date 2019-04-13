@@ -12,6 +12,10 @@
 		3B3902C122585371005F6DE9 /* LQTestNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902C022585371005F6DE9 /* LQTestNotificationViewController.m */; };
 		3B3902C522586982005F6DE9 /* NSObject+LQModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902C422586982005F6DE9 /* NSObject+LQModel.m */; };
 		3B3902C722588AB3005F6DE9 /* LQNotificationCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902C622588AB3005F6DE9 /* LQNotificationCenterTests.m */; };
+		3B3902C922588B84005F6DE9 /* LQModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902C822588B84005F6DE9 /* LQModelTests.m */; };
+		3B3902CC2258AF89005F6DE9 /* LQClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902CB2258AF89005F6DE9 /* LQClassInfo.m */; };
+		3B3902CF2259EA71005F6DE9 /* LQModelMeta.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902CE2259EA71005F6DE9 /* LQModelMeta.m */; };
+		3B3902D522619D2C005F6DE9 /* LQTestModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902D422619D2C005F6DE9 /* LQTestModelViewController.m */; };
 		3BF580CA224BB974002072AF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF580C9224BB974002072AF /* AppDelegate.m */; };
 		3BF580CD224BB974002072AF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF580CC224BB974002072AF /* ViewController.m */; };
 		3BF580D0224BB974002072AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BF580CE224BB974002072AF /* Main.storyboard */; };
@@ -42,6 +46,14 @@
 		3B3902C322586982005F6DE9 /* NSObject+LQModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LQModel.h"; sourceTree = "<group>"; };
 		3B3902C422586982005F6DE9 /* NSObject+LQModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LQModel.m"; sourceTree = "<group>"; };
 		3B3902C622588AB3005F6DE9 /* LQNotificationCenterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQNotificationCenterTests.m; sourceTree = "<group>"; };
+		3B3902C822588B84005F6DE9 /* LQModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQModelTests.m; sourceTree = "<group>"; };
+		3B3902CA2258AF89005F6DE9 /* LQClassInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQClassInfo.h; sourceTree = "<group>"; };
+		3B3902CB2258AF89005F6DE9 /* LQClassInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQClassInfo.m; sourceTree = "<group>"; };
+		3B3902CD2259EA71005F6DE9 /* LQModelMeta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQModelMeta.h; sourceTree = "<group>"; };
+		3B3902CE2259EA71005F6DE9 /* LQModelMeta.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQModelMeta.m; sourceTree = "<group>"; };
+		3B3902D02259ECDB005F6DE9 /* LQModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQModel.h; sourceTree = "<group>"; };
+		3B3902D322619D2C005F6DE9 /* LQTestModelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQTestModelViewController.h; sourceTree = "<group>"; };
+		3B3902D422619D2C005F6DE9 /* LQTestModelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQTestModelViewController.m; sourceTree = "<group>"; };
 		3BF580C5224BB974002072AF /* LQOCFoundation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LQOCFoundation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BF580C8224BB974002072AF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3BF580C9224BB974002072AF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -84,6 +96,13 @@
 			children = (
 				3B3902C322586982005F6DE9 /* NSObject+LQModel.h */,
 				3B3902C422586982005F6DE9 /* NSObject+LQModel.m */,
+				3B3902CA2258AF89005F6DE9 /* LQClassInfo.h */,
+				3B3902CB2258AF89005F6DE9 /* LQClassInfo.m */,
+				3B3902CD2259EA71005F6DE9 /* LQModelMeta.h */,
+				3B3902CE2259EA71005F6DE9 /* LQModelMeta.m */,
+				3B3902D02259ECDB005F6DE9 /* LQModel.h */,
+				3B3902D322619D2C005F6DE9 /* LQTestModelViewController.h */,
+				3B3902D422619D2C005F6DE9 /* LQTestModelViewController.m */,
 			);
 			path = LQModel;
 			sourceTree = "<group>";
@@ -130,6 +149,7 @@
 				3BF580E1224BB975002072AF /* LQOCFoundationTests.m */,
 				3BF580E3224BB975002072AF /* Info.plist */,
 				3B3902C622588AB3005F6DE9 /* LQNotificationCenterTests.m */,
+				3B3902C822588B84005F6DE9 /* LQModelTests.m */,
 			);
 			path = LQOCFoundationTests;
 			sourceTree = "<group>";
@@ -254,9 +274,12 @@
 				3BF580CD224BB974002072AF /* ViewController.m in Sources */,
 				3B3902C122585371005F6DE9 /* LQTestNotificationViewController.m in Sources */,
 				3B236C792252664E0047D351 /* LQNotification.m in Sources */,
+				3B3902D522619D2C005F6DE9 /* LQTestModelViewController.m in Sources */,
+				3B3902CF2259EA71005F6DE9 /* LQModelMeta.m in Sources */,
 				3BF580F2224BB996002072AF /* LQNotificationCenter.m in Sources */,
 				3BF580D8224BB975002072AF /* main.m in Sources */,
 				3BF580CA224BB974002072AF /* AppDelegate.m in Sources */,
+				3B3902CC2258AF89005F6DE9 /* LQClassInfo.m in Sources */,
 				3B3902C522586982005F6DE9 /* NSObject+LQModel.m in Sources */,
 				3BF580F1224BB996002072AF /* LQObservation.m in Sources */,
 			);
@@ -266,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B3902C922588B84005F6DE9 /* LQModelTests.m in Sources */,
 				3B3902C722588AB3005F6DE9 /* LQNotificationCenterTests.m in Sources */,
 				3BF580E2224BB975002072AF /* LQOCFoundationTests.m in Sources */,
 			);
