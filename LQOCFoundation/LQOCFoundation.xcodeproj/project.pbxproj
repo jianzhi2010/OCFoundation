@@ -16,6 +16,7 @@
 		3B3902CC2258AF89005F6DE9 /* LQClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902CB2258AF89005F6DE9 /* LQClassInfo.m */; };
 		3B3902CF2259EA71005F6DE9 /* LQModelMeta.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902CE2259EA71005F6DE9 /* LQModelMeta.m */; };
 		3B3902D522619D2C005F6DE9 /* LQTestModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902D422619D2C005F6DE9 /* LQTestModelViewController.m */; };
+		3B3902D72261EA37005F6DE9 /* JsonModel.md in Resources */ = {isa = PBXBuildFile; fileRef = 3B3902D62261EA37005F6DE9 /* JsonModel.md */; };
 		3BF580CA224BB974002072AF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF580C9224BB974002072AF /* AppDelegate.m */; };
 		3BF580CD224BB974002072AF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF580CC224BB974002072AF /* ViewController.m */; };
 		3BF580D0224BB974002072AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BF580CE224BB974002072AF /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 		3B3902D02259ECDB005F6DE9 /* LQModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQModel.h; sourceTree = "<group>"; };
 		3B3902D322619D2C005F6DE9 /* LQTestModelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQTestModelViewController.h; sourceTree = "<group>"; };
 		3B3902D422619D2C005F6DE9 /* LQTestModelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQTestModelViewController.m; sourceTree = "<group>"; };
+		3B3902D62261EA37005F6DE9 /* JsonModel.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = JsonModel.md; sourceTree = "<group>"; };
 		3BF580C5224BB974002072AF /* LQOCFoundation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LQOCFoundation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BF580C8224BB974002072AF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3BF580C9224BB974002072AF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				3B3902D02259ECDB005F6DE9 /* LQModel.h */,
 				3B3902D322619D2C005F6DE9 /* LQTestModelViewController.h */,
 				3B3902D422619D2C005F6DE9 /* LQTestModelViewController.m */,
+				3B3902D62261EA37005F6DE9 /* JsonModel.md */,
 			);
 			path = LQModel;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B3902D72261EA37005F6DE9 /* JsonModel.md in Resources */,
 				3B3902BE2258531D005F6DE9 /* NotificationCenter.md in Resources */,
 				3BF580D5224BB975002072AF /* LaunchScreen.storyboard in Resources */,
 				3BF580D2224BB975002072AF /* Assets.xcassets in Resources */,
