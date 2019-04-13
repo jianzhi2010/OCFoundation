@@ -22,6 +22,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+#if DEBUG
+    [[NSBundle bundleWithPath:@"/Applications/InjectionIII.app/Contents/Resources/iOSInjection10.bundle"] load];
+#endif
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(test:) name:nil object:nil];
     
     return YES;
