@@ -8,59 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "NSObject+LQModel.h"
-
-@interface LQModelParent : NSObject
-
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, assign) NSInteger age;
-@property (nonatomic, assign) double weight;
-
-@end
-
-@implementation LQModelParent
-
-@end
-
-@interface LQModelToy : NSObject
-
-@property (nonatomic, copy) NSString *function;
-@property (nonatomic, assign) double price;
-
-@end
-
-@implementation LQModelToy
-
-@end
-
-@interface LQModelChild : LQModelParent
-
-@property (nonatomic, strong) LQModelParent *father;
-@property (nonatomic, strong) LQModelParent *mother;
-@property (nonatomic, strong) NSArray<LQModelToy *> *toys;
-
-@property (nonatomic, copy) NSString *status;
-@property (nonatomic, copy) NSString *nickName;
-
-@end
-
-@implementation LQModelChild
-
-+ (NSDictionary<NSString *, id> *)modelCustomPropertyMapper {
-    return @{
-             @"nickName" : @"nick",
-             @"status" : @"ext.s",
-             };
-}
-
-+ (nullable NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass {
-    return @{
-             @"father" : @"LQModelParent",
-             @"mother" : LQModelParent.class,
-             @"toys" : LQModelToy.class,
-             };
-}
-
-@end
+#import "LQTestModel.h"
 
 
 @interface LQModelTests : XCTestCase
