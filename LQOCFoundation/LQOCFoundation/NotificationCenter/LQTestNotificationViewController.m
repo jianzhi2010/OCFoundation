@@ -67,4 +67,22 @@
     NSLog(@"self:%@", self);
 }
 
+
+- (void)testPeform {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        NSLog(@"gcd begin-->");
+        [self performSelectorOnMainThread:@selector(mainThreadTest) withObject:self waitUntilDone:NO];
+        
+        sleep(10);
+        NSLog(@"gcd end-->");
+        
+    });
+}
+
+- (void)mainThreadTest {
+    NSLog(@"%@ begin", NSStringFromSelector(_cmd));
+}
+
+
 @end
