@@ -18,12 +18,34 @@ objc_getAssociatedObject(id _Nonnull object, const void * _Nonnull key)
 核心源码如下：
 
 ```
+
+spinlock_t AssociationsManagerLock;
+
+class AssociationsManager {
+    // associative references: object pointer -> PtrPtrHashMap.
+    static AssociationsHashMap *_map;
+public:
+    //创建时会上锁(其实是为了保证读取map是线程安全的)
+    AssociationsManager()   { AssociationsManagerLock.lock(); }
+    //销毁时解锁
+    ~AssociationsManager()  { AssociationsManagerLock.unlock(); }
+    
+    AssociationsHashMap &associations() {
+        if (_map == NULL)
+            _map = new AssociationsHashMap();
+        return *_map;
+    }
+};
+
+AssociationsHashMap *AssociationsManager::_map = NULL;
+
+
 // set
 void _object_set_associative_reference(id object, void *key, id value, uintptr_t policy) {
     // retain the new value (if any) outside the lock.
     ObjcAssociation old_association(0, nil);
     id new_value = value ? acquireValue(value, policy) : nil;
-    {
+    ( //这个花括号区域内，创建AssociationsManager时会上锁，释放AssociationsManager会解锁，保证了读取map是线程安全的
         AssociationsManager manager;
         AssociationsHashMap &associations(manager.associations());
         disguised_ptr_t disguised_object = DISGUISE(object);
@@ -105,5 +127,5 @@ id _object_get_associative_reference(id object, void *key) {
 ### 参考
 
 * [Objective-C Associated Objects 的实现原理](http://blog.leichunfeng.com/blog/2015/06/26/objective-c-associated-objects-implementation-principle/)
-
+* [关联对象 AssociatedObject 完全解析](https://draveness.me/ao)
 

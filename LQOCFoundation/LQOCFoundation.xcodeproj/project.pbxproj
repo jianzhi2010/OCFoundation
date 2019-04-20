@@ -21,6 +21,7 @@
 		3B3902E422634112005F6DE9 /* LQKVOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902E322634112005F6DE9 /* LQKVOTests.m */; };
 		3B3902E72264C3B5005F6DE9 /* LQKeyValueObserveInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902E62264C3B5005F6DE9 /* LQKeyValueObserveInfo.m */; };
 		3B3902EA226609FE005F6DE9 /* LQTestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902E9226609FE005F6DE9 /* LQTestUtil.m */; };
+		3B3902EF226AF3F4005F6DE9 /* LQAssociatedObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902EE226AF3F4005F6DE9 /* LQAssociatedObjectTest.m */; };
 		3BF580CA224BB974002072AF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF580C9224BB974002072AF /* AppDelegate.m */; };
 		3BF580CD224BB974002072AF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF580CC224BB974002072AF /* ViewController.m */; };
 		3BF580D0224BB974002072AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BF580CE224BB974002072AF /* Main.storyboard */; };
@@ -69,6 +70,8 @@
 		3B3902E62264C3B5005F6DE9 /* LQKeyValueObserveInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQKeyValueObserveInfo.m; sourceTree = "<group>"; };
 		3B3902E8226609FE005F6DE9 /* LQTestUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQTestUtil.h; sourceTree = "<group>"; };
 		3B3902E9226609FE005F6DE9 /* LQTestUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQTestUtil.m; sourceTree = "<group>"; };
+		3B3902EE226AF3F4005F6DE9 /* LQAssociatedObjectTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQAssociatedObjectTest.m; sourceTree = "<group>"; };
+		3B3902F0226AFD84005F6DE9 /* LQUnitTestUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQUnitTestUtil.h; sourceTree = "<group>"; };
 		3BF580C5224BB974002072AF /* LQOCFoundation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LQOCFoundation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BF580C8224BB974002072AF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3BF580C9224BB974002072AF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -146,11 +149,11 @@
 			path = TestDemo;
 			sourceTree = "<group>";
 		};
-		3B3902ED226616B0005F6DE9 /* KVC */ = {
+		3B3902ED226616B0005F6DE9 /* AssociatedObject */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = KVC;
+			path = AssociatedObject;
 			sourceTree = "<group>";
 		};
 		3BF580BC224BB974002072AF = {
@@ -174,7 +177,7 @@
 		3BF580C7224BB974002072AF /* LQOCFoundation */ = {
 			isa = PBXGroup;
 			children = (
-				3B3902ED226616B0005F6DE9 /* KVC */,
+				3B3902ED226616B0005F6DE9 /* AssociatedObject */,
 				3B3902DF22630526005F6DE9 /* TestDemo */,
 				3B3902D82261EDC9005F6DE9 /* KVO */,
 				3B3902C222586750005F6DE9 /* LQModel */,
@@ -200,6 +203,8 @@
 				3B3902C622588AB3005F6DE9 /* LQNotificationCenterTests.m */,
 				3B3902C822588B84005F6DE9 /* LQModelTests.m */,
 				3B3902E322634112005F6DE9 /* LQKVOTests.m */,
+				3B3902EE226AF3F4005F6DE9 /* LQAssociatedObjectTest.m */,
+				3B3902F0226AFD84005F6DE9 /* LQUnitTestUtil.h */,
 			);
 			path = LQOCFoundationTests;
 			sourceTree = "<group>";
@@ -344,6 +349,7 @@
 			files = (
 				3B3902C922588B84005F6DE9 /* LQModelTests.m in Sources */,
 				3B3902C722588AB3005F6DE9 /* LQNotificationCenterTests.m in Sources */,
+				3B3902EF226AF3F4005F6DE9 /* LQAssociatedObjectTest.m in Sources */,
 				3BF580E2224BB975002072AF /* LQOCFoundationTests.m in Sources */,
 				3B3902E422634112005F6DE9 /* LQKVOTests.m in Sources */,
 			);

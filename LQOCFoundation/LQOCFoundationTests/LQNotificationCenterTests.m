@@ -7,16 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
-
+#import "LQUnitTestUtil.h"
 #import "LQNotificationCenter.h"
 #import "LQNotification.h"
-
-#define WAIT do {\
-[self expectationForNotification:@"LQUnitTest" object:nil handler:nil];\
-[self waitForExpectationsWithTimeout:30 handler:nil];\
-} while (0);
-#define NOTIFY \
-[[NSNotificationCenter defaultCenter]postNotificationName:@"LQUnitTest" object:nil];
 
 @interface LQNotificationCenterTests : XCTestCase
 
