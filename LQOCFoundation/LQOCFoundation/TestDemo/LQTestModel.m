@@ -11,8 +11,6 @@
 
 @implementation LQModelParent
 
-
-
 - (void)setManualNotifyObject:(NSString *)manualNotifyObject {
     // you have to call willChangeValueForKey & didChangeValueForKey
     [self willChangeValueForKey:@"manualNotifyObject"];
@@ -31,6 +29,10 @@
 
 
 @implementation LQModelToy
+
+- (void)runWithSpeed:(double)speed {
+    NSLog(@"runWithSpeed:%.2f", speed);
+}
 
 - (void)dealloc {
     NSLog(@"dealloc:%@", self);

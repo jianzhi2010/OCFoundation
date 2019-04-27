@@ -21,11 +21,12 @@
 @end
 
 
-
 @interface LQModelToy : NSObject
 
 @property (nonatomic, copy) NSString *function;
 @property (nonatomic, assign) double price;
+
+- (void)runWithSpeed:(double)speed;
 
 @end
 

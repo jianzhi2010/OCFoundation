@@ -8,6 +8,8 @@
 
 #import <XCTest/XCTest.h>
 #import "LQTestModel.h"
+#import "LQAspects.h"
+#import <objc/runtime.h>
 
 @interface LQRuntimeTests : XCTestCase
 
@@ -45,6 +47,37 @@
     XCTAssertFalse(res4);
     
 }
+
+- (void)testAspectsClassMethod {
+
+    [object_getClass(LQModelToy.class) lq_hookSelector:@selector(debugDescription) options:LQAspectPositionBefore usingBlock:^(void) {
+        
+        NSLog(@"before -->");
+    } error:NULL];
+    
+    NSLog(@"-->%@", [LQModelToy debugDescription]);
+}
+
+- (void)testAspectsInstanceMethod {
+
+    LQModelToy *toy = [LQModelToy new];
+    [toy lq_hookSelector:@selector(runWithSpeed:) options:LQAspectPositionBefore usingBlock:^(LQAspectInfo *info, double speed) {
+        
+        NSLog(@"before....info:%@, speed:%.2f", info, speed);
+        
+        XCTAssertTrue(speed = 0.3);
+    } error:NULL];
+    
+    [toy lq_hookSelector:@selector(runWithSpeed:) options:LQAspectPositionAfter usingBlock:^(void){
+        
+        NSLog(@"after......");
+    } error:NULL];
+    
+    [toy runWithSpeed:0.3];
+    
+}
+
+
 
 
 @end
