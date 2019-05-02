@@ -119,6 +119,34 @@ id _object_get_associative_reference(id object, void *key) {
 
 ```
 
+### 关联对象的移除时机
+
+```
+/***********************************************************************
+* objc_destructInstance
+* Destroys an instance without freeing memory. 
+* Calls C++ destructors.
+* Calls ARC ivar cleanup.
+* Removes associative references.
+* Returns `obj`. Does nothing if `obj` is nil.
+**********************************************************************/
+void *objc_destructInstance(id obj) 
+{
+    if (obj) {
+        // Read all of the flags at once for performance.
+        bool cxx = obj->hasCxxDtor();
+        bool assoc = obj->hasAssociatedObjects();
+
+        // This order is important.
+        if (cxx) object_cxxDestruct(obj);
+        if (assoc) _object_remove_assocations(obj);
+        obj->clearDeallocating();
+    }
+
+    return obj;
+}
+```
+
 ### 注意点
 
 * 关联对象的移除时机： 关联对象的移除时机和释放时机并不总是一致的

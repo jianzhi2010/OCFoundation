@@ -7,6 +7,7 @@
 //
 
 #import "LQBlockViewController.h"
+#import <objc/runtime.h>
 
 @interface LQBlockViewController ()
 
@@ -22,7 +23,7 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
 //    [self testGlobalBlock];
-//    [self testMallocBlock];
+    [self testMallocBlock];
 //    [self testStackBlock];
     
 }
@@ -47,6 +48,14 @@
     
     //__NSMallocBlock__
     NSLog(@"%@", mallocBlock);
+    
+    Class clazz = object_getClass(mallocBlock);
+    while (clazz) {
+        Class superClazz = class_getSuperclass(clazz);
+        NSLog(@"class:%@, superClass:%@", clazz, superClazz);
+        
+        clazz = superClazz;
+    }
 }
 
 
