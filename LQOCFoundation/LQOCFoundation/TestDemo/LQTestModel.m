@@ -11,6 +11,14 @@
 
 @implementation LQModelParent
 
++ (void)initialize {
+    //如果子类没有实现initialize的话，父类的initialize会被调用多次
+    NSLog(@"initialize--->parent %@", self);
+    if (self == [LQModelParent class]) {
+        NSLog(@"initialize--->check %@", self);
+    }
+}
+
 - (void)setManualNotifyObject:(NSString *)manualNotifyObject {
     // you have to call willChangeValueForKey & didChangeValueForKey
     [self willChangeValueForKey:@"manualNotifyObject"];
