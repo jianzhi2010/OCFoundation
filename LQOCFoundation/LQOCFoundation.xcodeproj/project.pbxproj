@@ -26,6 +26,8 @@
 		3B3902F5226E022D005F6DE9 /* LQAspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902F4226E022D005F6DE9 /* LQAspects.m */; };
 		3B3902F8227406D1005F6DE9 /* LQAspectInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902F7227406D1005F6DE9 /* LQAspectInfo.m */; };
 		3B5BD3482279CDFF00210DC0 /* LQBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5BD3472279CDFF00210DC0 /* LQBlockViewController.m */; };
+		3BA58294229437AD00FD1D39 /* LQLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA58293229437AD00FD1D39 /* LQLabel.m */; };
+		3BA58297229437C800FD1D39 /* LQTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA58296229437C800FD1D39 /* LQTextViewController.m */; };
 		3BF580CA224BB974002072AF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF580C9224BB974002072AF /* AppDelegate.m */; };
 		3BF580CD224BB974002072AF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF580CC224BB974002072AF /* ViewController.m */; };
 		3BF580D0224BB974002072AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BF580CE224BB974002072AF /* Main.storyboard */; };
@@ -83,6 +85,10 @@
 		3B3902F7227406D1005F6DE9 /* LQAspectInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQAspectInfo.m; sourceTree = "<group>"; };
 		3B5BD3462279CDFF00210DC0 /* LQBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQBlockViewController.h; sourceTree = "<group>"; };
 		3B5BD3472279CDFF00210DC0 /* LQBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQBlockViewController.m; sourceTree = "<group>"; };
+		3BA58292229437AD00FD1D39 /* LQLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQLabel.h; sourceTree = "<group>"; };
+		3BA58293229437AD00FD1D39 /* LQLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQLabel.m; sourceTree = "<group>"; };
+		3BA58295229437C800FD1D39 /* LQTextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQTextViewController.h; sourceTree = "<group>"; };
+		3BA58296229437C800FD1D39 /* LQTextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQTextViewController.m; sourceTree = "<group>"; };
 		3BF580C5224BB974002072AF /* LQOCFoundation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LQOCFoundation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BF580C8224BB974002072AF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3BF580C9224BB974002072AF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -180,6 +186,17 @@
 			path = Block;
 			sourceTree = "<group>";
 		};
+		3BA582912294379600FD1D39 /* TextKit */ = {
+			isa = PBXGroup;
+			children = (
+				3BA58292229437AD00FD1D39 /* LQLabel.h */,
+				3BA58293229437AD00FD1D39 /* LQLabel.m */,
+				3BA58295229437C800FD1D39 /* LQTextViewController.h */,
+				3BA58296229437C800FD1D39 /* LQTextViewController.m */,
+			);
+			path = TextKit;
+			sourceTree = "<group>";
+		};
 		3BF580BC224BB974002072AF = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +218,7 @@
 		3BF580C7224BB974002072AF /* LQOCFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				3BA582912294379600FD1D39 /* TextKit */,
 				3B5BD3452279CDDC00210DC0 /* Block */,
 				3B3902ED226616B0005F6DE9 /* Aspects */,
 				3B3902DF22630526005F6DE9 /* TestDemo */,
@@ -359,6 +377,7 @@
 				3B3902F8227406D1005F6DE9 /* LQAspectInfo.m in Sources */,
 				3B5BD3482279CDFF00210DC0 /* LQBlockViewController.m in Sources */,
 				3B3902DB2262277F005F6DE9 /* NSObject+LQKeyValueObserving.m in Sources */,
+				3BA58294229437AD00FD1D39 /* LQLabel.m in Sources */,
 				3B236C792252664E0047D351 /* LQNotification.m in Sources */,
 				3B3902DE22630472005F6DE9 /* LQTestKVOViewController.m in Sources */,
 				3B3902D522619D2C005F6DE9 /* LQTestModelViewController.m in Sources */,
@@ -368,6 +387,7 @@
 				3BF580CA224BB974002072AF /* AppDelegate.m in Sources */,
 				3B3902CC2258AF89005F6DE9 /* LQClassInfo.m in Sources */,
 				3B3902C522586982005F6DE9 /* NSObject+LQModel.m in Sources */,
+				3BA58297229437C800FD1D39 /* LQTextViewController.m in Sources */,
 				3BF580F1224BB996002072AF /* LQObservation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

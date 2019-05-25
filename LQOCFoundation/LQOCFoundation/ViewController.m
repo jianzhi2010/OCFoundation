@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "LQTestUtil.h"
+#import <objc/runtime.h>
 
 @interface ViewController ()
 
@@ -26,6 +28,5 @@
     [super touchesBegan:touches withEvent:event];
 
 }
-
 
 @end
