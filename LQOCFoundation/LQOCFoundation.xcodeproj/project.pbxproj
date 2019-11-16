@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B00233F22999913008B31B8 /* LQCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00233E22999913008B31B8 /* LQCacheViewController.m */; };
+		3B00234222999920008B31B8 /* LQCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00234122999920008B31B8 /* LQCache.m */; };
+		3B00234522999A4F008B31B8 /* LQMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00234422999A4F008B31B8 /* LQMemoryCache.m */; };
 		3B236C792252664E0047D351 /* LQNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B236C782252664E0047D351 /* LQNotification.m */; };
 		3B3902C122585371005F6DE9 /* LQTestNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902C022585371005F6DE9 /* LQTestNotificationViewController.m */; };
 		3B3902C522586982005F6DE9 /* NSObject+LQModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3902C422586982005F6DE9 /* NSObject+LQModel.m */; };
@@ -50,6 +53,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B00233D22999913008B31B8 /* LQCacheViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQCacheViewController.h; sourceTree = "<group>"; };
+		3B00233E22999913008B31B8 /* LQCacheViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQCacheViewController.m; sourceTree = "<group>"; };
+		3B00234022999920008B31B8 /* LQCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQCache.h; sourceTree = "<group>"; };
+		3B00234122999920008B31B8 /* LQCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQCache.m; sourceTree = "<group>"; };
+		3B00234322999A4F008B31B8 /* LQMemoryCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQMemoryCache.h; sourceTree = "<group>"; };
+		3B00234422999A4F008B31B8 /* LQMemoryCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQMemoryCache.m; sourceTree = "<group>"; };
 		3B236C772252664E0047D351 /* LQNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQNotification.h; sourceTree = "<group>"; };
 		3B236C782252664E0047D351 /* LQNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQNotification.m; sourceTree = "<group>"; };
 		3B3902BF22585371005F6DE9 /* LQTestNotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQTestNotificationViewController.h; sourceTree = "<group>"; };
@@ -126,6 +135,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B00233422993E5E008B31B8 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				3B00233D22999913008B31B8 /* LQCacheViewController.h */,
+				3B00233E22999913008B31B8 /* LQCacheViewController.m */,
+				3B00234022999920008B31B8 /* LQCache.h */,
+				3B00234122999920008B31B8 /* LQCache.m */,
+				3B00234322999A4F008B31B8 /* LQMemoryCache.h */,
+				3B00234422999A4F008B31B8 /* LQMemoryCache.m */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		3B3902C222586750005F6DE9 /* LQModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +240,7 @@
 		3BF580C7224BB974002072AF /* LQOCFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				3B00233422993E5E008B31B8 /* Cache */,
 				3BA582912294379600FD1D39 /* TextKit */,
 				3B5BD3452279CDDC00210DC0 /* Block */,
 				3B3902ED226616B0005F6DE9 /* Aspects */,
@@ -317,6 +340,7 @@
 				TargetAttributes = {
 					3BF580C4224BB974002072AF = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					3BF580DC224BB975002072AF = {
 						CreatedOnToolsVersion = 10.1;
@@ -370,6 +394,7 @@
 			files = (
 				3B3902F5226E022D005F6DE9 /* LQAspects.m in Sources */,
 				3B3902E22263055C005F6DE9 /* LQTestModel.m in Sources */,
+				3B00233F22999913008B31B8 /* LQCacheViewController.m in Sources */,
 				3B3902E72264C3B5005F6DE9 /* LQKeyValueObserveInfo.m in Sources */,
 				3B3902EA226609FE005F6DE9 /* LQTestUtil.m in Sources */,
 				3BF580CD224BB974002072AF /* ViewController.m in Sources */,
@@ -386,6 +411,8 @@
 				3BF580D8224BB975002072AF /* main.m in Sources */,
 				3BF580CA224BB974002072AF /* AppDelegate.m in Sources */,
 				3B3902CC2258AF89005F6DE9 /* LQClassInfo.m in Sources */,
+				3B00234222999920008B31B8 /* LQCache.m in Sources */,
+				3B00234522999A4F008B31B8 /* LQMemoryCache.m in Sources */,
 				3B3902C522586982005F6DE9 /* NSObject+LQModel.m in Sources */,
 				3BA58297229437C800FD1D39 /* LQTextViewController.m in Sources */,
 				3BF580F1224BB996002072AF /* LQObservation.m in Sources */,
@@ -551,6 +578,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = LQOCFoundation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -559,6 +587,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.learn.LQOCFoundation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -567,6 +598,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = LQOCFoundation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -575,6 +607,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.learn.LQOCFoundation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

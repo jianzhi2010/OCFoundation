@@ -24,6 +24,13 @@
     
 #if DEBUG
     [[NSBundle bundleWithPath:@"/Applications/InjectionIII.app/Contents/Resources/iOSInjection10.bundle"] load];
+    
+    NSBundle *bundle = [NSBundle bundleWithPath:@"/Users/Lam/Library/Developer/Xcode/DerivedData/InjectionIII-dklavftdhsdwhwdxfguwltyyglko/Build/Products/Debug/InjectionIII.app/Contents/Resources/iOSInjection10.bundle"];
+//    bundle = [NSBundle bundleWithPath:@"/Users/Lam/Library/Developer/Xcode/DerivedData/InjectionIII-dklavftdhsdwhwdxfguwltyyglko/Build/Products/Debug/macOSInjection.bundle"];
+    if (bundle) {
+//       BOOL suc = [bundle load];
+//        NSLog(@"-->%d",suc);
+    }
 #endif
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(test:) name:nil object:nil];
